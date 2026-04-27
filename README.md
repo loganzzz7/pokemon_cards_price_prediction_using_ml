@@ -1,4 +1,4 @@
-# Pokemon Card Price Prediction Using Machine Learning
+# [Pokemon Card Price Prediction Using Machine Learning](https://github.com/loganzzz7/pokemon_cards_price_prediction_using_ml)
 
 ## Introduction
 
