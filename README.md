@@ -2,12 +2,12 @@
 
 ## Introduction
 
-The market for collectible assets such as Pokémon trading cards has grown significantly over the past decade, with rare cards often appreciating substantially due to scarcity, nostalgia, grading, and public popularity. However, predicting card price movements remains challenging because prices are influenced by multiple dynamic factors including historical sales trends, character popularity, set rarity, condition grading, and broader hobbist sentiment.
+The market for collectible assets such as Pokémon trading cards has grown significantly over the past decade, with rare cards often appreciating substantially due to scarcity, nostalgia, grading, and public popularity. However, predicting card price movements remains challenging because prices are influenced by multiple dynamic factors including historical sales trends, character popularity, card rarity, condition grading, and broader hobbist sentiment.
 
 This project aims to design and evaluate a machine learning framework to predict Pokémon card prices using historical pricing data combined with self-framed popularity metrics.
 
 ### The Problem:
-Can machine learning models predict future Pokémon card prices (non-graded, aka "raw" copy) using historical price data and card-specific popularity guages--i.e. character on card, set sentiment?
+Can machine learning models predict future Pokémon card prices (non-graded, aka "raw" copy) using historical price data and card-specific popularity guages--i.e. character on card, card rarity?
 
 ---
 
@@ -41,13 +41,14 @@ This project aims to be an innovative price prediction analysis on alternative a
 
 The project will gather data from multiple verified sources:
 
-#### Historical Price Data:
+#### Price Data:
+- [PokeTrace API](https://poketrace.com/)
+
+#### Card Feature Data (i.e. rarity):
 - [PokeTrace API](https://poketrace.com/)
 
 #### Popularity Features:
-- Google Trends search frequency
-- Pokémon character popularity rankings
-- Set
+- [Pokémon character popularity rankings](https://www.ranker.com/list/best-generation-1-pokemon/ranker-pokemon)
 
 ### Data Verification:
 To avoid invalid assumptions:
@@ -60,11 +61,13 @@ To avoid invalid assumptions:
 
 Predictive features include:
 
-- Previous 7-day / 30-day price averages
+- Card rarity
+- Price momentum (% change from 30d avg)
+- Price volatility (std dev of 30d prices)
 - Sale volume
 - Popularity rating
-- Character category
-- Set release age
+~~- Previous 7-day / 30-day price averages~~(in a more stable market the recent price averages were minimally different from the current price, so I decided to stick with non-highly-indicative features)
+~~- Set release age ~~(decided to focus on the original 151 pokemons and narrow down to 1 set--sv-151--instead)
 
 ---
 
@@ -113,7 +116,6 @@ Predictive features include:
 ### Benchmark Analysis
 - Model performance comparison
 - Error analysis
-- Computational efficiency
 
 ### Visualizations
 - Price trend predictions
